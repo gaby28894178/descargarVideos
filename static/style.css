@@ -1,0 +1,12 @@
+/* static/styles.css */
+body {
+    background-color: #1c232b;
+}
+
+.container {
+    max-width: 600px;
+}
+
+input{
+    border: 1px solid green
+}
