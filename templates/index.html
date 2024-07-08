@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargador de YouTube</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* static/styles.css */
+body {
+    background-color: #0f2238;
+    color: aliceblue;
+}
+nav{
+    background-color: rgb(57, 66, 66);
+}
+.container {
+    max-width: 600px;
+}
+
+input{
+    border: 1px solid green
+}
+        .navbar {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar para donaciones de PayPal -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Descargador de YouTube</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.paypal.com/donate?hosted_button_id=YOUR_PAYPAL_BUTTON_ID" target="_blank">Donar con PayPal</a>
+                </li>
+                <li>
+                   <br> <p style="color: black;">Este aplicacion esta echo sin fin de lucro solo de manetra de aprender</p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Descargar Video o Audio de YouTube Solo Con fin Educativo Grupo 20</h1>
+        <form method="POST" action="{{ url_for('index') }}" class="mt-4">
+            <div class="form-group">
+                <label for="url">URL del video de YouTube</label>
+                <input type="text" id="url" name="url" class="form-control" placeholder="Ingresa la URL del video" required>
+            </div>
+            <div class="form-group">
+                <label for="format">Seleccionar formato</label>
+                <select id="format" name="format" class="form-control">
+                    <option value="mp4">MP4</option>
+                    <option value="mp3">MP3</option>
+                    <option value="avi">AVI</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Descargar</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mt-3">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message|safe }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
